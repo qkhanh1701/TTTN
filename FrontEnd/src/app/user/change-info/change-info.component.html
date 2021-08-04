@@ -1,0 +1,52 @@
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+    <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+        <article class="card-body">
+            <header class="mb-4">
+                <h4 class="card-title" style="text-align: center;
+                font-size: 33px;">Change Info</h4>
+            </header>
+            <form [formGroup]="this.dataForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" placeholder="" formControlName="username">
+                </div>
+                <div class="form-row">
+                    <div class="col form-group">
+                        <label>First name</label>
+                        <input type="text" class="form-control" placeholder="" formControlName="firstname">
+                    </div>
+                    <!-- form-group end.// -->
+                    <div class="col form-group">
+                        <label>Last name</label>
+                        <input type="text" class="form-control" placeholder="" formControlName="lastname">
+                    </div>
+                    <!-- form-group end.// -->
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" class="form-control" placeholder="" formControlName="phone">
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" class="form-control" placeholder="" formControlName="address">
+                </div>
+                <!-- form-row.// -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block" [disabled]="this.dataForm.invalid">Edit</button>
+                </div>
+                <!-- form-group// -->
+                <!-- form-group end.// -->
+            </form>
+        </article>
+        <!-- card-body.// -->
+    </div>
+    <!-- card .// -->
+    <br><br>
+    <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

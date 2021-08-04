@@ -1,0 +1,147 @@
+<!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg">
+    <div class="container">
+        <h2 class="title-page">Shopping cart</h2>
+    </div>
+    <!-- container //  -->
+</section>
+<!-- ========================= SECTION INTRO END// ========================= -->
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+
+        <div class="row">
+            <main class="col-md-9">
+                <div class="card">
+
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th scope="col">Product</th>
+                                <th scope="col" width="120">Quantity</th>
+                                <th scope="col" width="120">Price</th>
+                                <th scope="col" class="text-right" width="200"> </th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let cart of carts">
+                            <tr>
+                                <td>
+                                    <figure class="itemside" style="position: relative;">
+                                        <img class="promotion" src="assets/images/promotion.png" *ngIf="promotion(cart.product.promotion)">
+                                        <label style="position: absolute;
+                                        font-size: 17px;
+                                        font-weight: bold;
+                                        color: #eac22e;
+                                        left: -38px;
+                                        top: -15px;
+                                        z-index: 1;" *ngIf="promotion(cart.product.promotion)">-{{cart.product.promotion}}%</label>
+                                        <div class="aside"><img src={{cart.product.image}} class="img-sm" style="width: 100px;"></div>
+                                        <figcaption class="info" style="font-weight: 700;
+                                        padding-top: 8px;">
+                                            <a href="#" class="title text-dark">{{cart.product.name}}</a>
+                                        </figcaption>
+                                    </figure>
+                                </td>
+                                <td style="padding: 11px 0px 0px 6px;">
+                                    <button class="btn btn-primary btn-sm quantity" (click)="decrease(cart.id,cart.quantity)">-</button> {{cart.quantity}}
+                                    <button class="btn btn-primary btn-sm quantity" (click)="increase(cart.id,cart.quantity)">+</button>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    No more in stock
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--button class="btn btn-primary btn-sm" (click)="_increamentQTY(item.productId._id,1)">+</button> {{ item.quantity }}
+                                    <button class="btn btn-primary btn-sm">-</button-->
+                                </td>
+                                <td>
+                                    <div class="price-wrap">
+                                        <div class="price-wrap" *ngIf="promotion(cart.product.promotion)">
+                                            <span class="price h5">{{cart.product.price - cart.product.price*1/cart.product.promotion | currency}} </span>
+                                            <del class="price-old">{{cart.product.price | currency}}</del>
+                                        </div>
+                                        <div class="price-wrap" *ngIf="!promotion(cart.product.promotion)">
+                                            <span class="price h5">{{cart.product.price | currency}} </span>
+                                        </div>
+                                    </div>
+                                    <!-- price-wrap .// -->
+                                </td>
+                                <td class="text-right">
+                                    <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light mr-2" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
+                                    <a href="" class="btn btn-light" (click)="$event.preventDefault();deleteCartById(cart.id)"> Remove</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="card-body border-top">
+                        <a href="#" class="btn btn-primary float-md-right" (click)="$event.preventDefault();checkout()"> Make Purchase <i class="fa fa-chevron-right"></i> </a>
+                        <a href="#" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
+                    </div>
+                </div>
+                <!-- card.// -->
+
+                <div class="alert alert-success mt-3">
+                    <p class="icontext"><i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
+                </div>
+
+            </main>
+            <!-- col.// -->
+            <aside class="col-md-3">
+                <div class="card mb-3">
+                </div>
+                <!-- card .// -->
+                <div class="card">
+                    <div class="card-body">
+                        <dl class="dlist-align">
+                            <dt>Total price:</dt>
+                            <dd class="text-right">{{totalCart | currency }}</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Discount:</dt>
+                            <dd class="text-right">{{totalDiscount | currency }}</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Total:</dt>
+                            <dd class="text-right  h5"><strong>{{totalAfterDis | currency }}</strong></dd>
+                        </dl>
+                        <hr>
+                    </div>
+                    <!-- card-body.// -->
+                </div>
+                <!-- card .// -->
+            </aside>
+            <!-- col.// -->
+        </div>
+
+    </div>
+    <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name bg padding-y">
+    <div class="container">
+        <h6>Payment and refund policy</h6>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    </div>
+    <!-- container // -->
+</section>
+<!-- ========================= SECTION  END// ========================= -->

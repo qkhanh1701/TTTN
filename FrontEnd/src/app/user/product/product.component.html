@@ -1,0 +1,94 @@
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y bg">
+    <div class="container">
+
+        <article class="card">
+            <div class="card-body">
+                <div class="row">
+                    <aside class="col-md-6">
+                        <article class="gallery-wrap" style="position: relative;">
+                            <img class="promotion" src="assets/images/promotion.png" *ngIf="IsPromotion">
+                            <label style="position: absolute;
+                                        font-size: 17px;
+                                        font-weight: bold;
+                                        color: #eac22e;
+                                        right: -4px;
+                                        top: -12px;
+                                        z-index: 5;" *ngIf="IsPromotion">-{{product?.promotion}}%</label>
+                            <div class="card img-big-wrap">
+                                <a href="#"> <img src="{{product?.image}}" style="height: 397px;
+                                    padding: 50px 0;"></a>
+                            </div>
+                            <!-- card img-big-wrap.// -->
+                            <div class="thumbs-wrap" style="display: flex;
+                            justify-content: center;">
+                                <div *ngFor="let imageDetail of imageDetails">
+                                    <a href="#" class="item-thumb" style="padding: 7px 0 0 0;"> <img src="{{imageDetail.image}}"></a>
+                                </div>
+                            </div>
+                            <!-- thumbs-wrap .// -->
+                        </article>
+                        <!-- gallery-wrap .end// -->
+                    </aside>
+                    <main class="col-md-6" style="padding-top: 30px;">
+                        <article>
+                            <h3 class="title">{{product?.name}}</h3>
+                            <div>
+                                <ul class="rating-stars">
+                                    <li class="stars-active">
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </li>
+                                </ul>
+                                <span class="label-rating mr-3 text-muted">7/10</span>
+                                <a href="#" class="btn-link  mr-3 text-muted"> <i class="fa fa-heart"></i> Save for later </a>
+                                <a href="#" class="btn-link text-muted"> <i class="fa fa-book-open"></i> Compare </a>
+                            </div>
+
+                            <hr>
+
+                            <div class="mb-3">
+                                <h6>Short description</h6>
+                                <p>{{product?.description}}</p>
+                            </div>
+
+
+                            <div class="price-wrap" *ngIf="IsPromotion">
+                                <label style="margin-right: 15px;
+                                font-size: 18px;
+                                font-weight: 700;">Price:</label>
+                                <span class="price h5">{{product.price - product.price*product.promotion/100 | currency}} </span>
+                                <del class="price-old">{{product.price | currency}}</del>
+                            </div>
+                            <div class="price-wrap" *ngIf="!IsPromotion">
+                                <label style="margin-right: 15px;
+                                font-size: 18px;
+                                font-weight: 700;">Price:</label>
+                                <span class="price h5">{{product.price | currency}} </span>
+                            </div>
+                            <!-- price-detail-wrap .// -->
+
+                            <div class="mb-4" style="margin-top: 15px;">
+                                <a href="#" class="btn btn-light" (click)="$event.preventDefault();addToCart()" style="background-color: #6cd3f7;">Add to cart</a>
+                            </div>
+
+                        </article>
+                        <!-- product-info-aside .// -->
+                    </main>
+                    <!-- col.// -->
+                </div>
+                <!-- row.// -->
+            </div>
+            <!-- card-body.// -->
+        </article>
+    </div>
+
+
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->

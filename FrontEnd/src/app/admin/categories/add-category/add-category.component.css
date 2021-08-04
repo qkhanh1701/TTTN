@@ -1,0 +1,171 @@
+.filter {
+    width: 100%;
+    height: 50px;
+    margin: 20px 0;
+    padding: 0 50px;
+}
+
+.option-category {
+    float: left;
+}
+
+.search-bar {
+    float: right;
+}
+
+input[name="name"]{
+    width: 100%;
+    padding: 15px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  
+  input[name="name"] {
+    background-color: #ddd;
+    outline: none;
+  }
+
+  input[name=id]{
+      cursor: not-allowed;
+      background: rgb(182, 182, 182);
+  }
+
+  textarea[name=description] {
+    height: 200px;
+  }
+
+  label {
+    margin-top: 20px;
+  }
+
+  .button-group {
+    margin-left: 30%;
+}
+
+.registerbtn {
+  background-color: #036b9b;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+  transition: 0.5s;
+}
+
+.cancelbtn {
+  background-color: #c43307;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0 8px 10%;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+  transition: 0.5s;
+}
+
+.cancelbtn:hover {
+    background: rgb(206, 109, 109);
+    color: #111;
+  }
+
+.registerbtn:hover {
+  background: rgb(88, 122, 236);
+  color: #111;
+}
+
+.validation {
+    color: red;
+    font-style: italic;
+  }
+
+
+  /* Modal */
+  .okbtn {
+    float: left;
+    width: 30%;
+    background-color: #cc4036;
+    margin-top: 20px;
+    margin-left: 35%;
+    padding: 20px 0;
+    font-weight: 30px;
+  }
+
+  .okbtn:hover {
+    filter: invert(0);
+  }
+  
+  .container-modal {
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .modal {
+    display: block; 
+    z-index: 1; 
+    top: 10%;
+    left: calc(25% + 300px);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    /* margin: 5% 25% 15% 25%; */
+    border: 1px solid #888;
+    width: 30%; 
+  }
+  
+  /* Clear floats */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  /* Table CSS */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 10px;
+  }
+
+  table thead td {
+    font-weight: 800;
+    font-size: larger;
+  }
+
+  table tbody tr {
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  table tr:last-child {
+    border-bottom: none;
+  }
+
+  table tbody tr:hover {
+    background: #03a9f4;
+    color: #fff;
+  }
+
+  table tr td {
+    padding: 9px 5px;
+  }
+
+  table thead tr td:nth-child(2),
+  table tbody tr td:nth-child(2) {
+    text-align: center;
+  }
+
+  table thead tr td:nth-child(3),
+  table tbody tr td:nth-child(3) {
+    float: inline-end;
+  }
+
+  table thead tr td:last-child,
+  table tbody tr td:last-child {
+    float: right;
+  }

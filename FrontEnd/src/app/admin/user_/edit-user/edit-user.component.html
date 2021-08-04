@@ -1,0 +1,76 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="container" style="width: 70%; margin: auto;">
+      <h1 style="color: red; text-align: center;">Edit User</h1>
+
+        <label for="id"><b>Id</b></label>
+        <input formControlName="id" type="text" name="id"/>
+
+        <label for="email"><b>Email</b></label>
+        <input formControlName="email" type="text" placeholder="Enter Email" name="email"
+                [ngClass]="{'is-invalid': f.email.errors}"/>
+        <div *ngIf="submitted && f.email.errors">
+            <div *ngIf="f.email.errors.required" class="validation">*Email is required</div>
+        </div>
+        
+        <label for="username"><b>User Name</b></label>
+        <input formControlName="username" type="text" placeholder="Enter User Name" 
+                [ngClass]="{'is-invalid': f.username.errors}"/>
+        <div *ngIf="submitted && f.username.errors">
+            <div *ngIf="f.username.errors.required" class="validation">*Username is required</div>
+        </div>
+
+        <div class="left-col">
+            <label for="firstname"><b>First Name</b></label>
+            <input formControlName="firstname" type="text" placeholder="Enter First Name" 
+                    [ngClass]="{'is-invalid': f.firstname.errors}"/>
+            <div *ngIf="submitted && f.firstname.errors">
+                <div *ngIf="f.firstname.errors.required" class="validation">*First Name is required</div>
+            </div>
+        </div>
+        <div class="right-col">
+            <label for="lastname"><b>Last Name</b></label>
+            <input formControlName="lastname" type="text" placeholder="Enter Last Name" 
+                    [ngClass]="{'is-invalid': f.lastname.errors}"/>
+            <div *ngIf="submitted && f.lastname.errors">
+                <div *ngIf="f.lastname.errors.required" class="validation">*Last Name is required</div>
+            </div>
+        </div>
+
+        <label for="phone"><b>Phone Number</b></label>
+        <input formControlName="phone" type="text" placeholder="Enter Phone Number" 
+                [ngClass]="{'is-invalid': f.phone.errors}"/>
+        <div *ngIf="submitted && f.phone.errors">
+            <div *ngIf="f.phone.errors.required" class="validation">*Phone Number is required</div>
+        </div>
+        
+        <label for="address"><b>Address</b></label>
+        <input formControlName="address" type="text" placeholder="Enter Address" 
+                [ngClass]="{'is-invalid': f.address.errors}"/>
+        <div *ngIf="submitted && f.address.errors">
+            <div *ngIf="f.address.errors.required" class="validation">*Address is required</div>
+        </div>
+
+    </div>
+
+    <div *ngIf="notification" class="modal">
+      <div class="modal-content">
+        <div class="container-modal">
+          <h1>Notification</h1>
+
+          <div>
+            <p>{{message}}</p>
+          </div>
+        
+          <div class="clearfix">
+            <button routerLink="../../users" type="button" class="okbtn">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" class="registerbtn" style="margin-top: 20px">Edit</button>
+      <button routerLink="../../users" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+

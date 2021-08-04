@@ -1,0 +1,85 @@
+<div class="col-md-12" style="width: 70%; margin: auto">
+    <div class="filter">
+        <div class="option-category">
+            <button *ngIf="isAddMode" routerLink="../add-category"
+                    [disabled]="submitted" class="btn btn-info">Add Category</button>
+            <button *ngIf="!isAddMode" routerLink="../../add-category" 
+                    [disabled]="submitted" class="btn btn-info">Add Category</button>
+        </div>
+        
+        <div class="search-bar">  
+          <input class="form-control-lg" type="text" placeholder="Search..." [(ngModel)]="filter"/>
+        </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <td>Id</td>
+          <td>Name</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <tr *ngFor="let category of categories | filter: filter | paginate: {id: 'pagination', itemsPerPage: 5, currentPage: pageNumber}">
+          <td>{{category.id}}</td>
+          <td>{{category.categoryName}}</td>
+          <td><button class="btn btn-danger" style="float: right" [disabled]="true">Delete</button></td>
+          <td *ngIf="isAddMode"><button routerLink="../edit-category/{{category.categoryName}}" 
+                    [disabled]="true" class="btn btn-primary">Edit</button></td>
+          <td *ngIf="!isAddMode"><button routerLink="../../edit-category/{{category.categoryName}}"
+                    [disabled]="true" class="btn btn-primary">Edit</button></td>
+        </tr>
+      </tbody>
+    </table>  
+  </div>
+  <div style="margin-left: 40%; margin-top: 50px;">
+    <pagination-controls id="pagination"
+    (pageChange)="pageNumber = $event"></pagination-controls>
+  </div>
+
+<div class="form-container" style="width: 50%; margin: auto">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h2 *ngIf="isAddMode">Add New Category</h2>
+        <h2 *ngIf="!isAddMode">Edit Category</h2>
+    
+        <label for="name"><b>Category Name</b></label>
+        <input formControlName="name" type="text" placeholder="Enter Category Name" name="name"
+                    [ngClass]="{'is-invalid': f.name.errors}"/>
+            <!-- <div *ngIf="submitted && f.name.errors">
+                <div *ngIf="f.name.errors.required" class="validation">*Name is required</div>
+            </div> -->
+        
+        <div class="button-group">
+            <button *ngIf="isAddMode" type="submit" class="registerbtn" style="margin-top: 20px">Add</button>
+            <button *ngIf="!isAddMode" type="submit" class="registerbtn" style="margin-top: 20px">Edit</button>
+            <button *ngIf="isAddMode" routerLink="../categories" class="cancelbtn">Cancel</button>
+            <button *ngIf="!isAddMode" routerLink="../../categories" class="cancelbtn">Cancel</button>
+        </div>
+
+        <div *ngIf="notification" class="modal">
+          <div class="modal-content">
+            <div class="container-modal">
+              <h1>Notification</h1>
+    
+              <!-- <div *ngFor="let error of message">
+                <p>{{error}}</p>
+              </div> -->
+
+              <div>
+                <p>{{message}}</p>
+              </div>
+            
+              <div class="clearfix">
+                <button *ngIf="isAddMode" routerLink="../categories" type="button" class="okbtn">OK</button>
+                <button *ngIf="!isAddMode" routerLink="../../categories" type="button" class="okbtn">OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+    </form>
+</div>

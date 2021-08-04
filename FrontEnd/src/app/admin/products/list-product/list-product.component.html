@@ -1,0 +1,59 @@
+<div class="filter">
+    <div class="option-category">
+        <select name="selectOptionSearch" id="search" [(ngModel)]="categoryName" (change)="getProduct(categoryName); config.currentPage =1;">
+      <option *ngFor="let category of categories" [value]="category.categoryName">
+        {{category.categoryName}}
+      </option>
+    </select>
+    </div>
+
+    <div class="search-bar">
+        <input class="form-control-lg" type="text" placeholder="Search..." (input)="config.currentPage = 1" [(ngModel)]="filter" />
+    </div>
+</div>
+
+<div class="col-md-12" style="width: 90%; margin: auto;">
+  <table>
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Quantity</td>
+        <td>Price</td>
+        <td>Sale</td>
+        <td style="text-align: center; width: 10%;">Image</td>
+        <td>Description</td>
+        <!-- <td></td>
+        <td></td> -->
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr *ngFor="let product of products | filter: filter | paginate: config">
+        <td routerLink="../edit/{{product.name}}">{{product.name}}</td>
+        <td routerLink="../edit/{{product.name}}" style="font-size: larger; color: crimson;"><strong>{{product.quantity}}</strong></td>
+        <td routerLink="../edit/{{product.name}}">{{product.price}}</td>
+        <td routerLink="../edit/{{product.name}}">{{product.promotion}}</td>
+        <td routerLink="../edit/{{product.name}}" style="text-align: center; width: 10%;"><img src="{{product.image}}" height="100px" width="auto"></td>
+        <td routerLink="../edit/{{product.name}}">{{product.description}}</td>
+        <td><button class="btn btn-danger" (click)="clickedDeleteBtn(product.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>  
+
+    <div *ngIf="clickedDelete" class="modal">
+        <div class="modal-content">
+            <div class="container-modal">
+                <h1>Delete Product?</h1>
+                <p>Are you sure you want to delete this Product?</p>
+                <p>This can't be undo!</p>
+                <div>
+                    <button type="button" class="deletebtn" (click)="deleteProduct(id)">Yes</button>
+                    <button type="button" class="cancelbtn" (click)="cancelBtnClick()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-left: 40%; margin-top: 50px;">
+        <pagination-controls id="pagination" (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>

@@ -1,0 +1,19 @@
+.quantity {
+    background: #F0F0E9;
+    color: #696763;
+    display: inline-block;
+    font-size: 16px;
+    height: 28px;
+    overflow: hidden;
+    width: 25px;
+    border: none;
+    margin: 0 5px;
+}
+
+.promotion {
+    position: absolute;
+    height: 63px;
+    left: -70px;
+    top: -33px;
+    z-index: 1;
+}

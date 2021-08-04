@@ -1,0 +1,53 @@
+<!-- ========================= SECTION MAIN ========================= -->
+<section class="section-main bg padding-y">
+    <div class="container">
+
+        <div class="row">
+            <!-- col.// -->
+            <div class="col-md-12">
+                <article class="banner-wrap">
+                    <img src="assets/images/Banner.png" class="w-100 rounded">
+                </article>
+            </div>
+            <!-- col.// -->
+        </div>
+        <!-- row.// -->
+    </div>
+    <!-- container //  -->
+</section>
+<!-- ========================= SECTION MAIN END// ========================= -->
+
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name padding-y-sm">
+    <div class="container">
+        <header class="section-heading">
+            <a href="#" class="btn btn-outline-primary float-right" routerLink="productlist">See all</a>
+            <h3 class="section-title">Discount products</h3>
+        </header>
+        <!-- sect-heading -->
+
+        <div class="row">
+            <div class="col-md-3" *ngFor="let product of products" style="position: relative;">
+                <div href="#" class="card card-product-grid">
+                    <img class="promotion" src="assets/images/promotion.png">
+                    <label style="position: absolute;
+                    font-size: 17px;
+                    font-weight: bold;
+                    color: #eac22e;
+                    right: 10px;
+                    top: -6px;">-{{product.promotion}}%</label>
+                    <a href="#" class="img-wrap" routerLink="product/{{product.name}}"> <img src={{product.image}}> </a>
+                    <figcaption class="info-wrap">
+                        <a href="#" class="title" style="font-weight: boild;">{{product.name}}</a>
+                        <div class="price mt-1">Quantity: {{product.quantity}}</div>
+                        <div class="price mt-1">Price: {{product.price | currency}}</div>
+                        <!-- price-wrap.// -->
+                    </figcaption>
+                </div>
+            </div>
+        </div>
+        <!-- row.// -->
+    </div>
+    <!-- container // -->
+</section>
+<!-- ========================= SECTION  END// ========================= -->

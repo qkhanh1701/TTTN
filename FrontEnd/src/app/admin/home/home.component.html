@@ -1,0 +1,95 @@
+<div class="topbar">
+    <div class="toggle"></div>
+    <div class="search">
+        <label>
+            <input type="text" placeholder="Search...">
+            <i class="fa fa-search" aria-hidden="true"></i>
+        </label>
+    </div>
+</div>
+
+<div class="cardBox">
+    <div class="card" routerLink="./products">
+        <div>
+            <div class="numbers">{{statistics[0]}}</div>
+            <div class="cardName">Products</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa fa-laptop" aria-hidden="true"></i>
+        </div>
+    </div>
+
+    <div class="card" routerLink="./users">
+        <div>
+            <div class="numbers">{{statistics[1]}}</div>
+            <div class="cardName">Users</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+    </div>
+
+    <div class="card" routerLink="./orderlist">
+        <div>
+            <div class="numbers">{{statistics[2]}}</div>
+            <div class="cardName">Orders</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa fa-qrcode" aria-hidden="true"></i>
+        </div>
+    </div>
+
+    <div class="card">
+        <div>
+            <div class="numbers">{{statistics[3] | currency}}</div>
+            <div class="cardName">Earning</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa fa-dollar-sign" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>
+
+<div class="details">
+    <div class="recentOrders">
+        <div class="cardHeader">
+            <h2>Recent Orders</h2>
+            <a routerLink="./orderlist" class="btn">View All</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Total</td>
+                    <td>Status</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>{{product.receiver}}</td>
+                    <td>{{product.amount | currency}}</td>
+                    <td *ngIf="product.status == 1"><span class="status inprogress">Delivering</span></td>
+                    <td *ngIf="product.status == 2"><span class="status delivered">Delivered</span></td>
+                    <td *ngIf="product.status == 3"><span class="status return">Canceled</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="recentCustomers">
+        <div class="cardHeader">
+            <h2>Recent Users</h2>
+        </div>
+        <table>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td width="60px">
+                        <div class="imgBx"><i class="fa fa-user-circle" aria-hidden="true"></i></div>
+                    </td>
+                    <td>
+                        <h4>{{user.username}}<br><span>{{user.address}}</span></h4>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

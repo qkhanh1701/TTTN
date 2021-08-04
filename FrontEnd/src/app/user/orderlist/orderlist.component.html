@@ -1,0 +1,80 @@
+<!-- ========================= SECTION PAGETOP ========================= -->
+<section class="section-pagetop bg">
+    <div class="container">
+        <h2 class="title-page">List Order</h2>
+    </div>
+    <!-- container //  -->
+</section>
+<!-- ========================= SECTION INTRO END// ========================= -->
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+    <div class="container">
+        <div class="row">
+            <main class="col-md-12">
+                <div class="card">
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th scope="col" width="100">Order Date</th>
+                                <th scope="col" width="100">Amount</th>
+                                <th scope="col" width="150">Receiver</th>
+                                <th scope="col" width="150">Address</th>
+                                <th scope="col" width="50">Phone Number</th>
+                                <th scope="col" class="text-left" width="300"> </th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let product of products">
+                            <tr>
+                                <td class="text-left">
+                                    {{product.order_date}}
+                                </td>
+                                <td class="text-left">
+                                    {{product.amount | currency}}
+                                </td>
+                                <td class="text-left">
+                                    {{product.receiver}}
+                                </td>
+                                <td class="text-left">
+                                    {{product.address}}
+                                </td>
+                                <td class="text-left">
+                                    {{product.phone_number}}
+                                </td>
+                                <td class="text-left" style="padding: 0;">
+                                    <a href="" class="btn btn-light" style="margin-right: 17px;" (click)="$event.preventDefault();ridrect(product.id)"> Order Detail</a>
+                                    <label class="btn btn-light" *ngIf="product.status == 1" style="margin-right: 17px;"> Delivering </label>
+                                    <label href="" class="btn btn-light" *ngIf="product.status == 2" style="margin-right: 17px;"> Delivered </label>
+                                    <label href="" class="btn btn-light" *ngIf="product.status == 3" style="margin-right: 17px;"> Cancelled </label>
+                                    <a href="" class="btn btn-light" *ngIf="product.status == 1 " style="margin-right: 17px; background-color: rgb(230, 82, 82);" (click)="$event.preventDefault();cancel(product.id)"> Cancel</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- card.// -->
+
+                <div class="alert alert-success mt-3">
+                    <p class="icontext"><i class="icon text-success fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
+                </div>
+
+            </main>
+        </div>
+
+    </div>
+    <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
+<!-- ========================= SECTION  ========================= -->
+<section class="section-name bg padding-y">
+    <div class="container">
+        <h6>Payment and refund policy</h6>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <!-- container // -->
+</section>
+<!-- ========================= SECTION  END// ========================= -->

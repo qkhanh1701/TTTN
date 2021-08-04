@@ -1,0 +1,172 @@
+.signup-form {
+    margin: auto;
+    width: 60%;
+    margin-top: 10px;
+}
+
+.left-col {
+    float: left;
+    width: 48%;
+    padding: 20px 1%;
+}
+
+.right-col {
+    float: right;
+    width: 48%;
+    padding: 20px 1%;
+}
+
+input[type=text],
+input[type=number],
+input[type=file],
+input[type=password] {
+    width: 100%;
+    padding: 15px;
+    display: inline-block;
+    border: none;
+    background: #e6e6e6;
+}
+
+input[type=text]:focus,
+input[type=number]:focus,
+textarea:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+input[name=id],
+input[type=password],
+input[name=email] {
+    cursor: not-allowed;
+    background: rgb(180, 180, 180);
+}
+
+textarea[name=description] {
+    height: 250px;
+}
+
+label {
+    margin-top: 20px;
+}
+
+.row-input {
+    display: flex;
+    padding: 0;
+    width: 100%;
+}
+
+.row-input-left {
+    float: left;
+    width: 50%;
+}
+
+.row-input-right {
+    float: right;
+    width: 50%;
+}
+
+.padding-input-left {
+    padding-right: 40px;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+.button-group {
+    margin-left: 40%;
+}
+
+.registerbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    opacity: 0.9;
+    transition: 0.5s;
+}
+
+.cancelbtn {
+    background-color: #c43307;
+    color: white;
+    padding: 16px 20px;
+    /* margin: 8px 0 8px 10%; */
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    opacity: 0.9;
+    transition: 0.5s;
+}
+
+.cancelbtn:hover {
+    letter-spacing: 4px;
+    background: rgb(206, 109, 109);
+    color: #111;
+}
+
+.registerbtn:hover {
+    letter-spacing: 4px;
+    background: rgb(95, 136, 98);
+    color: #111;
+}
+
+.validation {
+    color: red;
+    font-style: italic;
+}
+
+.product-image {
+    width: 50%;
+    height: auto;
+    margin-left: 25%;
+}
+
+
+/* Modal */
+
+.okbtn {
+    float: left;
+    width: 30%;
+    background-color: #cc4036;
+    margin-top: 20px;
+    margin-left: 35%;
+    padding: 20px 0;
+    font-weight: 30px;
+}
+
+.okbtn:hover {
+    filter: invert(0);
+}
+
+.container-modal {
+    padding: 50px;
+    text-align: center;
+}
+
+.modal {
+    display: block;
+    z-index: 1;
+    top: 10%;
+    left: calc(25% + 300px);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    /* margin: 5% 25% 15% 25%; */
+    border: 1px solid #888;
+    width: 30%;
+}
+
+
+/* Clear floats */
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}

@@ -1,0 +1,11 @@
+[class*=card-product] .img-wrap img {
+    height: 80%;
+    margin-top: 35px;
+}
+
+.promotion {
+    position: absolute;
+    height: 20%;
+    right: -22px;
+    top: -25px;
+}

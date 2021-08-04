@@ -1,0 +1,31 @@
+table tbody tr:hover{
+    background: #03a9f4;
+    color: #fff;
+}
+
+.status {
+    border-collapse: collapse;
+    position: relative;
+    padding: 2px 4px;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.delivered {
+    background: #8de02c;
+}
+
+.pending {
+    background: #f9ca3f;
+}
+
+.return {
+    background: #f00;
+}
+
+.inprogress {
+    background: #1795ce;
+}

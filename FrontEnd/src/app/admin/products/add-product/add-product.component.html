@@ -1,0 +1,152 @@
+<div class="container">
+  <form *ngIf="(product === undefined)" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1 style="color: red; text-align: center;">Add New Product</h1>
+          <label for="category"><b>Category</b></label>
+          <select [ngModelOptions]="{standalone: true}" [(ngModel)]="categoryName" 
+                  (change)="getCategoryByName(categoryName)">
+            <option *ngFor="let category of categories" [value]="category.categoryName">
+              {{category.categoryName}}
+            </option>
+          </select>
+          <div *ngIf="submitted && (categoryName === '')">
+            <div class="validation">*Category is required</div>
+          </div>
+          
+          <label for="name"><b>Name</b></label>
+          <input formControlName="name" type="text" placeholder="Enter Name" 
+                  [ngClass]="{'is-invalid': f.name.errors}"/>
+          <div *ngIf="submitted && f.name.errors">
+              <div *ngIf="f.name.errors.required" class="validation">*Name is required</div>
+          </div>
+
+          <label for="quantity"><b>Quantity</b></label>
+          <input formControlName="quantity" type="number" placeholder="Enter Quantity" 
+                  [ngClass]="{'is-invalid': f.quantity.errors}"/>
+          <div *ngIf="submitted && f.quantity.errors">
+              <div *ngIf="f.quantity.errors.required" class="validation">*Quantity is required</div>
+              <div *ngIf="f.quantity.errors.min" class="validation">*Quantity is not smaller than 0!</div>
+          </div>
+    
+          <label for="price"><b>Price</b></label>
+          <input formControlName="price" type="number" placeholder="Enter Price" 
+                  [ngClass]="{'is-invalid': f.price.errors}"/>
+          <div *ngIf="submitted && f.price.errors">
+              <div *ngIf="f.price.errors.required" class="validation">*Price is required</div>
+              <div *ngIf="f.price.errors.min" class="validation">*Price is not smaller than 0!</div>
+          </div>
+    
+          <label for="description"><b>Description</b></label>
+          <textarea formControlName="description" type="text" placeholder="Enter Description" name="description"
+                  [ngClass]="{'is-invalid': submitted && f.description.errors}">
+          </textarea>
+          <div *ngIf="submitted && f.description.errors">
+              <div *ngIf="f.description.errors.required" class="validation">*Description is required</div>
+          </div>
+          
+    
+          <label for="promotion"><b>Promotion</b></label>
+          <input formControlName="promotion" type="number" placeholder="Enter Promotion"
+                [ngClass]="{'is-invalid': submitted && f.promotion.errors}"/>
+          <div *ngIf="submitted && f.promotion.errors">
+            <div *ngIf="f.promotion.errors.required" class="validation">*Promotion is required</div>
+            <div *ngIf="f.promotion.errors.max" class="validation">*Promotion is not bigger than 100!</div>
+            <div *ngIf="f.promotion.errors.min" class="validation">*Promotion is not smaller than 0!</div>
+          </div>
+  
+          <div class="button-group">
+            <button type="submit" class="registerbtn" style="margin-top: 20px">Add</button>
+            <button (click)="cancelFormClick()" class="cancelbtn">Cancel</button>
+         </div>
+  
+    </form>
+  
+  
+    <form *ngIf="(product !== undefined)" [formGroup]="subForm" (ngSubmit)="onSubSubmit()" >
+      <h1 style="color: red; text-align: center;">Product Details</h1>
+      <label for="image"><b>Main Image</b></label>
+      <input formControlName="image" type="text" placeholder="Enter Image"
+            [ngClass]="{'is-invalid': submitted1 && sf.image.errors}"/>
+      <div *ngIf="submitted1 && sf.image.errors">
+        <div *ngIf="sf.image.errors.required" class="validation">*Main Image is required</div>
+      </div>
+      <div *ngIf="submitted1 && (product === undefined)">
+        <div class="validation">*You have to ADD PRODUCT before ADD DETAILS!</div>
+      </div>
+      <a *ngIf="sf.image.value !== ''" target="_blank" href="{{sf.image.value}}">
+        <img class="product-image" src="{{sf.image.value}}" alt="image">
+      </a>
+      <br>
+
+      <label for="subImage1"><b>Sub Image 1</b></label>
+      <input formControlName="subImage1" type="text" placeholder="Enter Sub Image"
+            [ngClass]="{'is-invalid': submitted1 && sf.subImage1.errors}"/>
+      <div *ngIf="submitted1 && sf.subImage1.errors">
+        <div *ngIf="sf.subImage1.errors.required" class="validation">*Sub Image is required</div>
+      </div>
+      <a *ngIf="sf.subImage1.value !== ''" target="_blank" href="{{sf.subImage1.value}}">
+        <img class="product-image" src="{{sf.subImage1.value}}" alt="image">
+      </a>
+      <br>
+
+      <label for="subImage2"><b>Sub Image 2</b></label>
+      <input formControlName="subImage2" type="text" placeholder="Enter Sub Image"
+            [ngClass]="{'is-invalid': submitted1 && sf.subImage2.errors}"/>
+      <div *ngIf="submitted1 && sf.subImage2.errors">
+        <div *ngIf="sf.subImage2.errors.required" class="validation">*Sub Image is required</div>
+      </div>
+      <a *ngIf="sf.subImage2.value !== ''" target="_blank" href="{{sf.subImage2.value}}">
+        <img class="product-image" src="{{sf.subImage2.value}}" alt="image">
+      </a>
+      <br>
+
+      <label for="subImage3"><b>Sub Image 3</b></label>
+      <input formControlName="subImage3" type="text" placeholder="Enter Sub Image"/>
+            <!-- [ngClass]="{'is-invalid': submitted1 && sf.subImage3.errors}"/> -->
+      <div *ngIf="submitted1 && sf.subImage3.errors">
+        <div *ngIf="sf.subImage3.errors.required" class="validation">*Sub Image is required</div>
+      </div>
+      <a *ngIf="sf.subImage3.value !== ''" target="_blank" href="{{sf.subImage3.value}}">
+        <img class="product-image" src="{{sf.subImage3.value}}" alt="image">
+      </a>
+      <br>
+
+      <div class="button-group" >
+        <button  type="submit" class="registerbtn" style="margin-top: 20px">Add</button>
+        <button (click)="cancelSubFormClick()" class="cancelbtn">Cancel</button>
+      </div>
+    </form>
+    
+    <div *ngIf="notification" class="modal">
+      <div class="modal-content">
+        <div class="container-modal">
+          <h1>Notification</h1>
+
+          <!-- <div *ngFor="let error of message">
+            <p>{{error}}</p>
+          </div> -->
+
+          <div>
+            <p>{{message}}</p>
+          </div>
+        
+          <div class="clearfix">
+            <button routerLink="../products" type="button" class="okbtn">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="clickedCancel" class="modal">
+      <div class="modal-content">
+        <div class="container-modal">
+          <h1>Cancel Add Product?</h1>
+          <p>Are you sure you want to cancel Add Product?</p>
+          <div>
+            <button *ngIf="(product === undefined)" type="button" class="btn btn-primary" (click)="navigateToProducts()" >Yes</button>
+            <button *ngIf="(product === undefined)" type="button" class="btn btn-danger" (click)="btnNoClicked()">No</button>
+            <button *ngIf="(product !== undefined)" type="button" class="btn btn-primary" (click)="deleteProductAndCancel(product.id)" >Yes</button>
+            <button *ngIf="(product !== undefined)" type="button" class="btn btn-danger" (click)="btnNoClicked()">No</button>
+          </div>
+        </div>
+      </div>
+</div>

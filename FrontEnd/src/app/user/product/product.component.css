@@ -1,0 +1,7 @@
+.promotion {
+    position: absolute;
+    height: 74px;
+    right: -50px;
+    top: -36px;
+    z-index: 5;
+}
